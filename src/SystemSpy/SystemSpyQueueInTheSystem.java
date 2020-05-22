@@ -6,6 +6,9 @@ import GlobalValues.Values;
 import javax.swing.*;
 import java.util.List;
 
+/**
+ * Class which allows to spy a specific queue.
+ */
 public class SystemSpyQueueInTheSystem implements Runnable {
     List<Car> carQueue;
 
@@ -14,7 +17,7 @@ public class SystemSpyQueueInTheSystem implements Runnable {
     }
     @Override
     public void run() {
-
+        // Table format for print out.
         String format = "|%1$-10s|%2$-10s|%3$-20s|\n";
         long timeTo = System.currentTimeMillis() + Values.carGeneratingTime;
 

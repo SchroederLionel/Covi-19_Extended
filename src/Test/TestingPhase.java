@@ -6,13 +6,17 @@ import GlobalValues.Values;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
+/**
+ * Class which represents a Testing station.
+ */
 public class TestingPhase implements Runnable {
-
+    // Unique identifer of the testing station ranges from one to three and each of them are unique.
     private int id;
     private List<Car> carWaitingQueue;
     private List<Car> currentlyInTheSystemQueue;
+    // Variable which stores the count of cars leaving the queue/system.
     public static AtomicInteger carLeftQueueAfterGettingTested = new AtomicInteger(0);
+    // Total sum of persons in each car during the simulation.
     public static AtomicInteger amountOfPersonsWhichWereTested = new AtomicInteger(0);
     Car carRemovedFromQueue;
 
@@ -22,6 +26,9 @@ public class TestingPhase implements Runnable {
       this.id = id;
     }
 
+    /**
+     * Function which allows to remove a car from the queue. (Sync not realy required since the List it self is already syn.)
+     */
     private  void removeCarFromWaitingQueue(){
         synchronized (carWaitingQueue){
             if(Values.queueDiscipline.contains("FIFO") || Values.queueDiscipline.contains(Values.queueDisciplineSPT) )
@@ -33,6 +40,9 @@ public class TestingPhase implements Runnable {
         }
     }
 
+    /**
+     * Function which allows to add a car to the system queue.
+     */
     private void addToCurrentlyInTheSystemQueue(){
         synchronized(carWaitingQueue){
         currentlyInTheSystemQueue.add(carRemovedFromQueue);}
@@ -41,11 +51,9 @@ public class TestingPhase implements Runnable {
     @Override
     public void run() {
         while(!Values.isTimeOver.get()){
-
             synchronized (carWaitingQueue) {
                 if(carWaitingQueue.size() > 0){
                         removeCarFromWaitingQueue();
-
                 }
             }
             if(carRemovedFromQueue != null ){
@@ -70,7 +78,9 @@ public class TestingPhase implements Runnable {
     }
 
 
-
+    /**
+     * Function which allows to remove a car from the System queue.
+     */
     private void removeFromCurrentlyInTheSystemQueue(){
         synchronized (currentlyInTheSystemQueue){
         currentlyInTheSystemQueue.remove(carRemovedFromQueue);}
