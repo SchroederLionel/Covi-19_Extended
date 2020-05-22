@@ -13,6 +13,21 @@ public class Simulation {
     public static void main(String[] args) throws InterruptedException {
         List<Car> carWaitingQueue = Collections.synchronizedList(new ArrayList<Car>());
         List<Car> currentlyInTheSystemQueue = Collections.synchronizedList(new ArrayList<Car>());
+        /**
+         * Comment below values out to get the default values.
+         */
+        // FIFO LIFO SPT LPT are the possible changes.
+        Values.queueDiscipline = "FIFO";
+        // Timer for how long a test should be.
+        Values.testForCovid = 120;
+        // Time for generating cars in seconds. Two hours default  = 7200.
+        Values.carGeneratingTime = 7200;
+        // For changing the car queue size.
+        Values.carQueueSize =10;
+        // Max arriving car time for generating.
+        Values.arrivingCarMax =60;
+        // Min arriving car time for generating.
+        Values.arrivingCarMin = 10;
 
         Thread generatingCars =  new Thread(new GeneratingCars(carWaitingQueue),"Generating Car Thread");
         generatingCars.start();
