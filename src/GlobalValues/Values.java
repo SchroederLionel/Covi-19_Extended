@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Class which is used to have a common place for shared values.
@@ -31,6 +32,14 @@ public class Values {
     public static String queueDisciplineLIFO = "LIFO";
     public static String queueDisciplineSPT = "SPT";
     public static String queueDisciplineLPT = "LPT";
+
+ // Value used to count the cars which left the queue due to a full queue.
+    public static AtomicInteger personsOverallInAllTheCars = new AtomicInteger(0);
+ // Stores the value of all the cars created.
+    public static AtomicInteger carsGeneratedOverall = new AtomicInteger(0);
+ // Value used to count the cars which left the queue due to a full queue.
+    public static AtomicInteger carLeftLaneSinceItIsFull = new AtomicInteger(0);
+
 
     /**
      * Function which allows to calculate an equal distribution between two bounded values. Used For generating cars in a time interval of 1 to 3 minutes.
