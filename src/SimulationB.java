@@ -32,7 +32,7 @@ public class SimulationB {
         Values.arrivingCarMax =180;
         // Min arriving car time for generating.
         Values.arrivingCarMin = 120;
-
+        // Gen cars thread
         Thread generatingCars =  new Thread(new GeneratingCarsWithMultipleQueues(carWaitingQueue1,carWaitingQueue2,carWaitingQueue3),"Generating Car Thread");
         generatingCars.start();
 
