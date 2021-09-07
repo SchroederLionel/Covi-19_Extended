@@ -13,11 +13,11 @@ The most common queuing technics are using FIFO, LIFO, SPT and LPT. In addition,
 This program is developed in Java and uses the Apache Commons Math library.
 
 ## Setup
-Import the project into your favorite IDe and make sure to add the Apache Commons Math library from [1].
+Import the project into your favorite IDe and make sure to add the Apache Commons Math library from [1](http://commons.apache.org/proper/commons-math/download_math.cgi).
 There are 4 different queuing types FIFO,LIFO,SPT,LPT which needs to be specified in the main method.
 In addition, by simply launching the program by default there are only three queues active if more or less queues are needed you need to motivate it in the main function itself by simply copy&pasting or removing the threads which are names Teststations.
 Moreover, you may be required to change the timing of the arrival of the cars or how long the simulation should be. All these parameters can be changed in the main method.
 That's it, have fun and check out what is the maximum possible capacity of your local test stations and compare the results.
 
 ## Library
-[1](http://commons.apache.org/proper/commons-math/download_math.cgi)
+[1. Apache Commons Math](http://commons.apache.org/proper/commons-math/download_math.cgi)
